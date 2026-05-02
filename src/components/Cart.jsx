@@ -20,7 +20,7 @@ const Cart = ({ cart, onUpdateQuantity, onRemove, total }) => {
         />
       ))}
       <div>
-        <h2>Total :</h2>
+        <h2>Total : {typeof total === "string" ? total : total.toFixed(2)}</h2>
       </div>
     </div>
   );
