@@ -2,18 +2,30 @@ import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 
 const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
   return (
-    <div className="cart-items">
-      <div className="">
-        <h2>{item.name}</h2>
-        <h2>{item.price}</h2>
+    <div className="cart-item">
+      {/* LEFT SIDE */}
+      <div className="item-details">
+        <h4>{item.name}</h4>
+        <p>₹{item.price}</p>
+
         <div className="quantity-controls">
-          <button onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}>
+          <button
+            onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
+            disabled={item.quantity <= 1}
+          >
             <FaMinus />
           </button>
+
+          <span>{item.quantity}</span>
+
           <button onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}>
             <FaPlus />
           </button>
         </div>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="item-actions">
         <button className="remove-btn" onClick={() => onRemove(item.id)}>
           <FaTrash />
         </button>
